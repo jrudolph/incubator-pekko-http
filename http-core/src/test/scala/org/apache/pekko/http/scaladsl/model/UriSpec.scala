@@ -693,7 +693,7 @@ class UriSpec extends AnyWordSpec with Matchers {
       // illegal path
       the[IllegalUriException] thrownBy Uri("http://www.example.com/name with spaces/") shouldBe {
         IllegalUriException(
-          "Illegal URI reference: Invalid input ' ', expected '/', 'EOI', '#', '?' or pchar (line 1, column 28)",
+          "Illegal URI referfence: Invalid input ' ', expected '/', 'EOI', '#', '?' or pchar (line 1, column 28)",
           "http://www.example.com/name with spaces/\n" +
           "                           ^")
       }
