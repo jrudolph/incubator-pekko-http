@@ -14,20 +14,20 @@ class GithubAnnotationTestsListener(baseDir: File, sourceDirs: Seq[File]) extend
   override def startGroup(name: String): Unit = println(s"::group::$name")
 
   override def testEvent(event: TestEvent): Unit = {
-    println(s"testEvent(${event.result}, ${event.detail.map(eventString).mkString("\n")})")
+    //println(s"testEvent(${event.result}, ${event.detail.map(eventString).mkString("\n")})")
 
     if (event.result.contains(TestResult.Failed)) {
       val failed = event.detail.filter(_.status() == Status.Failure)
       //println(s"Test failed: ${event.det}")
       failed.foreach { t =>
-        val line = if (t.throwable().isDefined) {
+        if (t.throwable().isDefined) {
           val throwable =t.throwable().get()
           val ele = throwable.getStackTrace.takeWhile(!_.getClassName.endsWith("OutcomeOf")).last
           val firstLine = throwable.getMessage.split("\n").head
           println(s"::error file=${findFile(ele.getFileName).getOrElse(ele.getFileName)},line=${ele.getLineNumber}::$firstLine")
-          s"${ele.getClassName} ${ele.getFileName} ${ele.getMethodName} ${ele.getLineNumber} ${findFile(ele.getFileName)}"
+          //s"${ele.getClassName} ${ele.getFileName} ${ele.getMethodName} ${ele.getLineNumber} ${findFile(ele.getFileName)}"
         }
-        println(s"Test failed: ${t.fullyQualifiedName()} ${t.selector()} $line")
+        //println(s"Test failed: ${t.fullyQualifiedName()} ${t.selector()} $line")
 
       }
     }
@@ -49,4 +49,9 @@ class GithubAnnotationTestsListener(baseDir: File, sourceDirs: Seq[File]) extend
   override def endGroup(name: String, t: Throwable): Unit = println("::endgroup::")
 
   override def endGroup(name: String, result: TestResult): Unit = println("::endgroup::")
+
+  def println(str: String): Unit = {
+    scala.Console.println(str)
+    scala.Console.flush()
+  }
 }
