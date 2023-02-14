@@ -39,7 +39,7 @@ class CollectingReporter(baseDir: File, sourceDirs: Seq[File]) extends xsbti.Rep
   /** Logs a message. */
   def log(pos: xsbti.Position, msg: String, sev: xsbti.Severity): Unit = {
     object MyProblem extends xsbti.Problem {
-      def category: String = null
+      def category: String = ""
       def severity: Severity = sev
       def message: String = msg
       def position: Position = pos
