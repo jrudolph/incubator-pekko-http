@@ -26,10 +26,10 @@ jobs:
           java-version: adopt@1.8
 
       - name: Cache Coursier cache
-        uses: coursier/cache-action@v6.2
+        uses: coursier/cache-action@v6.4.3
 
       - name: Cache Build Target
-        uses: actions/cache@v2
+        uses: actions/cache@v3.2.5
         with:
           path: project/**/target
           key: build-target-${{ hashFiles('**/*.sbt', 'project/build.properties', 'project/**/*.scala') }}
@@ -69,10 +69,10 @@ jobs:
           java-version: adopt@${{ matrix.JABBA_JDK }}
 
       - name: Cache Coursier cache
-        uses: coursier/cache-action@v6.2
+        uses: coursier/cache-action@v6.4.3
 
       - name: Cache Build Target
-        uses: actions/cache@v2
+        uses: actions/cache@v3.2.5
         with:
           path: project/**/target
           key: build-target-${{ hashFiles('**/*.sbt', 'project/build.properties', 'project/**/*.scala') }}
