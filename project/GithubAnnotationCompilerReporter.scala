@@ -49,9 +49,9 @@ class CollectingReporter(baseDir: File, sourceDirs: Seq[File]) extends xsbti.Rep
     buffer.append(MyProblem)
 
     if (sev == Severity.Warn && pos.sourceFile.isPresent) {
-      val file = baseDir.toPath.relativize(pos.sourceFile.get().toPath)
+      val file = baseDir.toPath.relativize(pos.sourceFile.get().toPath).toFile
       val message = msg.split("\n").head
-      println(s"::warning file=${file.getFileName}${pos.line().map[String](l => s",line=$l").orElse("")}::$message")
+      println(s"::warning file=${file}${pos.line().map[String](l => s",line=$l").orElse("")}::$message")
     }
   }
 
