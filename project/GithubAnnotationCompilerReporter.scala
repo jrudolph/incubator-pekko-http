@@ -4,6 +4,7 @@ import Keys._
 import xsbti.{Position, Severity}
 
 import java.nio.file.{Files, Path}
+import java.util.Optional
 
 object TestPlugin extends AutoPlugin {
   override def requires = plugins.JvmPlugin
@@ -51,7 +52,10 @@ class CollectingReporter(baseDir: File, sourceDirs: Seq[File]) extends xsbti.Rep
     if (sev == Severity.Warn && pos.sourceFile.isPresent) {
       val file = baseDir.toPath.relativize(pos.sourceFile.get().toPath).toFile
       val message = msg.split("\n").head
-      println(s"::warning file=${file}${pos.line().map[String](l => s",line=$l").orElse("")}::$message")
+      def e(key: String, value: Optional[Integer]): String =
+        value.map[String](v => s",$key=$v").orElse("")
+
+      println(s"::warning file=${file}${e("line", pos.line())}${e("col", pos.startColumn())}${e("endColumn", pos.endColumn())}}::$message")
     }
   }
 
