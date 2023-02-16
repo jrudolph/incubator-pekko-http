@@ -30,6 +30,10 @@ jobs:
         with:
           apps: sbt
 
+      - run: |-
+          whereis sbt
+          cat `whereis sbt`
+
       - name: Cache Build Target
         uses: actions/cache@v2
         with:
