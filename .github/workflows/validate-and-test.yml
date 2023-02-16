@@ -16,6 +16,8 @@ jobs:
     name: Checks
     runs-on: ubuntu-latest
     if: github.repository == 'jrudolph/incubator-pekko-http'
+    env:
+      SBT_OPTS: --javaHome /usr/lib/jvm/temurin-8-jdk-amd64
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -35,7 +37,7 @@ jobs:
           key: build-target-${{ hashFiles('**/*.sbt', 'project/build.properties', 'project/**/*.scala') }}
 
       - name: Check headers
-        run: sbt --javaHome /usr/lib/jvm/temurin-8-jdk-amd64 headerCheckAll
+        run: sbt headerCheckAll
 
       - name: Check for missing formatting
         run: git diff --exit-code --color
