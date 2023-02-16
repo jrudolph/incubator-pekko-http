@@ -16,6 +16,8 @@ jobs:
     name: Checks
     runs-on: ubuntu-latest
     if: github.repository == 'jrudolph/incubator-pekko-http'
+    env:
+      JAVA_HOME: /usr/lib/jvm/temurin-8-jdk-amd64
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -23,7 +25,7 @@ jobs:
       - name: Cache Coursier cache
         uses: coursier/cache-action@v6.2
 
-      - name: Cache Coursier cache
+      - name: Install sbt
         uses: coursier/setup-action@v1
 
       - name: Cache Build Target
