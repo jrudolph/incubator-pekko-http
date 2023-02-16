@@ -27,6 +27,8 @@ jobs:
 
       - name: Install sbt
         uses: coursier/setup-action@v1
+        with:
+          apps: sbt
 
       - name: Cache Build Target
         uses: actions/cache@v2
