@@ -15,7 +15,7 @@ jobs:
   formatting-check:
     name: Checks
     runs-on: ubuntu-latest
-    if: github.repository == 'apache/incubator-pekko-http'
+    if: github.repository == 'jrudolph/incubator-pekko-http'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
