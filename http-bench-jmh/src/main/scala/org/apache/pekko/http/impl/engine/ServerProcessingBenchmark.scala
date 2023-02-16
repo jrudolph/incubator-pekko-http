@@ -48,6 +48,7 @@ class ServerProcessingBenchmark extends CommonBenchmark {
     val config =
       ConfigFactory.parseString(
         """
+           akka.http.server.request-timeout = off
            pekko.actor.default-dispatcher.fork-join-executor.parallelism-max = 1
            akka.http.server.server-header = "pekko-http-bench"
         """)

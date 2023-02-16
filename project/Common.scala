@@ -41,10 +41,6 @@ object Common extends AutoPlugin {
     // when the type is asserted
     Test / compile / scalacOptions += "-Wconf:msg=match may not be exhaustive:s",
     mimaReportSignatureProblems := true,
-    testListeners ++= {
-      if (true /*sys.env.contains("GITHUB_ENV")*/) Seq(new GithubAnnotationTestsListener((ProjectRef(file("."), "pekko-http")/baseDirectory).value, (Test/sourceDirectories).value))
-      else Seq.empty
-    },
     Global / parallelExecution := sys.props.getOrElse("akka.http.parallelExecution", "true") != "false")
 
   val specificationVersion: String = sys.props("java.specification.version")
