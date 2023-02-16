@@ -20,13 +20,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up Scala on JDK 8
-        uses: olafurpg/setup-scala@v13
-        with:
-          java-version: adopt@1.8
-
       - name: Cache Coursier cache
         uses: coursier/cache-action@v6.2
+
+      - name: Cache Coursier cache
+        uses: coursier/setup-action@v1
 
       - name: Cache Build Target
         uses: actions/cache@v2
