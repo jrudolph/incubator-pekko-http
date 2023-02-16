@@ -33,3 +33,4 @@ libraryDependencies += "org.kohsuke" % "github-api" % "1.306"
 
 // used for @unidoc directive
 libraryDependencies += "io.github.lukehutch" % "fast-classpath-scanner" % "3.1.15"
+addSbtPlugin("net.virtual-void" % "sbt-hackers-digest" % "0.1.0")
