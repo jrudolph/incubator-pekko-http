@@ -33,7 +33,7 @@ jobs:
           echo "PATH=$JAVA_HOME_8_X64/bin:$PATH" >> $GITHUB_ENV
 
       - name: Cache Build Target
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: project/**/target
           key: build-target-${{ hashFiles('**/*.sbt', 'project/build.properties', 'project/**/*.scala') }}
@@ -78,7 +78,7 @@ jobs:
           echo "PATH=$JAVA_HOME_${{ matrix.JDK_VERSION }}_X64/bin:$PATH" >> $GITHUB_ENV
 
       - name: Cache Build Target
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: project/**/target
           key: build-target-${{ hashFiles('**/*.sbt', 'project/build.properties', 'project/**/*.scala') }}
