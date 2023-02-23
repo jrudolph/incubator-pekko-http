@@ -33,6 +33,7 @@ jobs:
       - run: |-
           whereis sbt
           cat `whereis sbt`
+          sbt -h
 
       - name: Cache Build Target
         uses: actions/cache@v2
