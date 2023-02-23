@@ -32,8 +32,8 @@ jobs:
 
       - run: |-
           whereis sbt
-          cat `whereis sbt`
-          sbt -h
+          cat /home/runner/cs/bin/sbt
+          /home/runner/cs/bin/sbt -h
 
       - name: Cache Build Target
         uses: actions/cache@v2
@@ -42,7 +42,7 @@ jobs:
           key: build-target-${{ hashFiles('**/*.sbt', 'project/build.properties', 'project/**/*.scala') }}
 
       - name: Check headers
-        run: sbt headerCheckAll
+        run: /home/runner/cs/bin/sbt headerCheckAll
 
       - name: Check for missing formatting
         run: git diff --exit-code --color
