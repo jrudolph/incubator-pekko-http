@@ -42,7 +42,7 @@ jobs:
           key: build-target-${{ hashFiles('**/*.sbt', 'project/build.properties', 'project/**/*.scala') }}
 
       - name: Check headers
-        run: /home/runner/cs/bin/sbt headerCheckAll
+        run: sbt headerCheckAll
 
       - name: Check for missing formatting
         run: git diff --exit-code --color
