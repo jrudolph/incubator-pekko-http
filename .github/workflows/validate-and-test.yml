@@ -30,10 +30,10 @@ jobs:
         with:
           apps: sbt
 
-      - run: |-
-          whereis sbt
-          cat /home/runner/cs/bin/sbt
-          /home/runner/cs/bin/sbt -h
+#      - run: |-
+#          whereis sbt
+#          cat /home/runner/cs/bin/sbt
+#          /home/runner/cs/bin/sbt -h
 
       - name: Cache Build Target
         uses: actions/cache@v2
