@@ -30,7 +30,7 @@ jobs:
         run: sudo apt-get install -y graphviz
 
       - name: Publish to Apache Maven repo
-        run: sbt --jvm-opts .jvmopts-ci +publish
+        run: sbt -v --jvm-opts .jvmopts-ci +publish
         env:
           NEXUS_USER: ${{ secrets.NEXUS_USER }}
           NEXUS_PW: ${{ secrets.NEXUS_PW }}
